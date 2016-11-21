@@ -1,7 +1,3 @@
-package client;
-
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,75 +5,77 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
-	private Stage stage;
-	private LoginController login;
-	private LoggedController logged;
+    private Stage stage;
+    private LoginController login;
+    private LoggedController logged;
 
-	@Override
-	public void start(Stage primaryStage) {
-		this.stage = primaryStage;
-		gotoLogin();
-		stage.show();
-		stage.setTitle("chat");
-		stage.setOnCloseRequest((WindowEvent event) -> {
-			System.exit(0);
-		});
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-	}
+    @Override
+    public void start(Stage primaryStage) {
+        this.stage = primaryStage;
+        gotoLogin();
+        stage.show();
+        stage.setTitle("chat");
+        stage.setOnCloseRequest((WindowEvent event) -> {
+            System.exit(0);
+        });
 
-	private void gotoLogin() {
+    }
 
-		String fxml = "Login.fxml";
-		String css = "Login.css";
+    private void gotoLogin() {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent page = null;
+        String fxml = "Login.fxml";
+        String css = "Login.css";
 
-		try {
-			page = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent page = null;
 
-		login = (LoginController) loader.getController();
-		login.setMain(this);
+        try {
+            page = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		Scene scene = new Scene(page);
-		scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
+        login = loader.getController();
+        login.setMain(this);
 
-		stage.setScene(scene);
+        Scene scene = new Scene(page);
+        scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
 
-	}
+        stage.setScene(scene);
 
-	public void gotoLogged(ConnectServer conn) {
-		String fxml = "Logged.fxml";
-		String css = "Login.css";
+    }
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-		Parent page = null;
+    public void gotoLogged(ConnectServer conn) {
+        String fxml = "Logged.fxml";
+        String css = "Login.css";
 
-		try {
-			page = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent page = null;
 
-		logged = (LoggedController) loader.getController();
-		logged.setConnection(conn);
+        try {
+            page = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		Scene scene = new Scene(page);
-		scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
+        logged = loader.getController();
+        logged.setConnection(conn);
 
-		stage.setScene(scene);
-	}
+        Scene scene = new Scene(page);
+        scene.getStylesheets().add(getClass().getResource(css).toExternalForm());
 
-	public Stage getStage() {
-		return this.stage;
-	}
+        stage.setScene(scene);
+    }
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+    public Stage getStage() {
+        return this.stage;
+    }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="378.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="LoggedController">
+    <bottom>
+        <GridPane BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS"/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+            </rowConstraints>
+            <children>
+                <HBox spacing="5.0" GridPane.columnIndex="1">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#handleSend" text="Send"/>
+                        <Button mnemonicParsing="false" onAction="#handleWhoIs" text="Whoisin"/>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" top="5.0"/>
+                    </padding>
+                </HBox>
+                <TextField fx:id="textMessage"/>
+            </children>
+        </GridPane>
+    </bottom>
+    <center>
+        <TextArea fx:id="textArea" editable="false" wrapText="true" BorderPane.alignment="CENTER"/>
+    </center>
+    <padding>
+        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+</BorderPane>

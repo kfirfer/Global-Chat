@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity"
+          minHeight="-Infinity" minWidth="-Infinity" vgap="10.0" xmlns="http://javafx.com/javafx/8"
+          fx:controller="LoginController">
+    <columnConstraints>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <Label text="Name"/>
+        <Label text="IP" GridPane.rowIndex="1"/>
+        <Label text="Port" GridPane.rowIndex="2"/>
+        <TextField fx:id="nameField" style="-fx-font-family: arial;" GridPane.columnIndex="1"/>
+        <TextField fx:id="ipField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <TextField fx:id="portField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <children>
+                <Button mnemonicParsing="false" onAction="#handleConnect" text="Connect"/>
+                <Button mnemonicParsing="false" onAction="#handleCancel" text="Cancel"/>
+            </children>
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+        </HBox>
+        <Label GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </children>
+    <padding>
+        <Insets bottom="30.0" left="50.0" right="50.0" top="50.0"/>
+    </padding>
+</GridPane>
